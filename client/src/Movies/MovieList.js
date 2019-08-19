@@ -23,16 +23,16 @@ const MovieList = props => {
   return (
     <div className="movie-list">
       {movies.map(movie => (
-        <MovieDetails key={movie.id} movie={movie} />
+        <MovieDetails key={movie.id} movie={movie} setMovies={setMovies} />
       ))}
     </div>
   );
 }
 
-function MovieDetails({ movie }) {
-  const { id, title, director, metascore, stars } = movie;
+function MovieDetails({ movie }, {setMovies}) {
+  const { id } = movie;
   return (
-    <Link to={`/movies/${id}`}>
+    <Link to={`/movies/${id}`} addtosavedlist={setMovies}>
       <MovieCard movie={movie}/>
     </Link>
   );
